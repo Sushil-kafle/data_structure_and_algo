@@ -1,4 +1,5 @@
-// 0 2 1 1 2 1 1 2
+// Input : nums = [ 2, 0, 2, 1, 1, 0 ]
+// Output : [ 0, 0, 1, 1, 2, 2 ]
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,13 +14,15 @@ int main()
 
     int low = 0;
     int middle = 0;
+
     int high = a.size() - 1;
 
     while (middle <= high)
     {
+
         if (a[middle] == 0)
         {
-            swap(a[low], a[middle]);
+            swap(a[middle], a[low]);
             low++;
             middle++;
         }
@@ -28,6 +31,7 @@ int main()
         {
             middle++;
         }
+
         else
         {
             swap(a[middle], a[high]);

@@ -7,31 +7,32 @@ using namespace std;
 int main()
 {
 
-    vector<int> a(7);
+    int sum = 9;
 
-    for (int &i : a)
+    vector<int> a;
+    int num;
+    while (cin >> num && (a.push_back(num), cin.get() != '\n'))
+        ;
+
+    int start = 0;
+    int end = a.size() - 1;
+
+    while (start < end)
     {
-        cin >> i;
-    }
-
-    vector<pair<int, int>> ans;
-
-    for (int i = 0; i < a.size(); i++)
-    {
-
-        for (int j = i + 1; j < a.size(); j++)
+        if ((a[end] + a[start]) > sum)
         {
-            if (a[i] + a[j] == 9)
-            {
-                ans.push_back({a[i], a[j]});
-            }
+            end--;
         }
-    }
-
-    for (auto &i : ans)
-    {
-
-        cout << i.first << " " << i.second << endl;
+        else if ((a[end] + a[start]) < sum)
+        {
+            start++;
+        }
+        else
+        {
+            cout << a[start] << "\t" << a[end] << endl;
+            start++;
+            end--;
+        }
     }
 
     return 0;

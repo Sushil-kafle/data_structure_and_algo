@@ -27,20 +27,7 @@ int main()
 
     while (index_a < a.size() and index_b < b.size() and index_c < c.size())
     {
-        if (a[index_a] < b[index_b] )
-        {
-            index_a++;
-        }
-        else if (b[index_b] < c[index_c])
-        {
-            index_b++;
-        }
-        else if (a[index_a] != b[index_b])
-        {
-            index_c++;
-        }
-
-        else
+        if (a[index_a] == b[index_b] && b[index_b] == c[index_c])
         {
             st.insert(a[index_a]);
 
@@ -48,12 +35,24 @@ int main()
             index_b++;
             index_c++;
         }
+        else if (a[index_a] < b[index_b])
+        {
+            index_a++;
+        }
+        else if (b[index_b] < c[index_c])
+        {
+            index_b++;
+        }
+        else
+        {
+            index_c++;
+        }
     }
 
-     for (auto i : st)
-        {
-            cout << i << endl;
-        }
+    for (auto i : st)
+    {
+        cout << i << endl;
+    }
 
     return 0;
 }

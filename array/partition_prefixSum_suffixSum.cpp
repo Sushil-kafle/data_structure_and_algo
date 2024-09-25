@@ -5,6 +5,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+bool check_prefix_sum(vector<int> &a)
+{
+
+    int start = 0;
+    int end = a.size() - 1;
+
+    int prefix_sum = a[start], suffix_sum = a[end];
+
+    while (start < end)
+    {
+        if (prefix_sum > suffix_sum)
+        {
+            end--;
+            suffix_sum += a[end];
+        }
+        else if (prefix_sum < suffix_sum)
+        {
+            start++;
+            prefix_sum += a[start];
+        }
+
+        else if (prefix_sum == suffix_sum)
+        {
+            cout << a[start] << " " << a[end];
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+}
+
 int main()
 {
 
@@ -14,45 +48,14 @@ int main()
     while (cin >> num && (a.push_back(num), cin.get() != '\n'))
         ;
 
-    int start = 0;
-    int end = a.size() - 1;
+    bool res;
 
-    int prefix_sum = a[start];
-    int suffix_sum = a[end];
+    res = check_prefix_sum(a);
 
-    // 5 4
-
-    while (start < end)
-    {
-
-        if (prefix_sum > suffix_sum)
-        {
-            end--;
-            suffix_sum += a[end];
-        }
-
-        else if (suffix_sum > prefix_sum)
-        {
-            start++;
-            prefix_sum += a[start];
-        }
-        else
-        {
-            start++;
-            end--;
-            suffix_sum += a[end];
-            prefix_sum += a[start];
-        }
+  
+    if(!res){
+        cout << "not found ";
     }
 
-    if (end == start)
-    {
-        cout << "no partition exists";
-    }
-    else
-    {
-
-        cout << a[end] << " " << a[start];
-    }
     return 0;
 }

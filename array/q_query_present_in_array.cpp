@@ -4,6 +4,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void freq_vector(vector<int> &a, vector<int> &freq)
+
+{
+    for (int i = 0; i < a.size(); i++)
+    {
+
+        freq[a[i]] += 1;
+    }
+}
+
 int main()
 {
     vector<int> a;
@@ -15,18 +25,14 @@ int main()
 
     vector<int> q = {1, 2, 10};
 
-    const int N = 1e5 + 10;
-
+    const int N = 10e5;
     vector<int> freq(N, 0);
 
-    for (int i = 0; i < a.size(); i++)
-    {
-        freq[a[i]] = freq[a[i]] + 1;
-    }
+    freq_vector(a, freq);
 
     for (int i = 0; i < q.size(); i++)
     {
-        cout << freq[q[i]] << " ";
+        cout << q[i] << " " << freq[q[i]] << endl;
     }
 
     return 0;

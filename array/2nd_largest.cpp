@@ -12,27 +12,24 @@ int main()
     while (cin >> num && (a.push_back(num), cin.get() != '\n'))
         ;
 
-    int largest_1 = INT_MIN;
-    int largest_2 = -INT_MIN;
+    int largest_number = -1;
+    int second_largest = -1;
+
     for (int i = 0; i < a.size(); i++)
     {
-        for (int j = i + 1; j < a.size(); j++)
+        if (a[i] > largest_number)
+        {
+            second_largest = largest_number;
 
-            if (a[i] + a[j] > largest_1 + largest_2)
-            {
-                if (a[i] != a[j])
-                {
-
-                    largest_1 = a[i];
-                    largest_2 = a[j];
-                }
-            }
+            largest_number = a[i];
+        }
+        if (a[i] > second_largest && a[i] < largest_number)
+        {
+            second_largest = a[i];
+        }
     }
 
-    if (largest_1 > largest_2)
-        cout << largest_2;
-    else
-        cout << largest_1;
+    cout << second_largest;
 
     return 0;
 }
