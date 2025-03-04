@@ -10,8 +10,6 @@ void permut(string s1, int k)
     if (k == s1.length())
     {
         cout << result << endl;
-
-        return;
     }
     else
     {
