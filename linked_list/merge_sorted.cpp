@@ -54,16 +54,44 @@ public:
         }
     }
 
-    void merge(LinkedList ll_2)
+    LinkedList *merge_sorted(LinkedList *ll_2)
     {
 
-        Node *temp = this->head;
-        while (temp->next != nullptr)
+        Node *p = this->head;
+
+        Node *q = ll_2->head;
+
+        LinkedList *ll_3 = new LinkedList();
+        Node *dummy = new Node(0);
+
+        Node *temp = dummy;
+
+        while (p != nullptr && q != nullptr)
         {
+            if (p->data > q->data)
+            {
+                temp->next = q;
+                q = q->next;
+            }
+            else
+            {
+                temp->next = p;
+                p = p->next;
+            }
+
             temp = temp->next;
         }
 
-        temp->next = ll_2.head;
+        if (p == nullptr)
+            temp->next = q;
+
+        if (q == nullptr)
+            temp->next = p;
+
+        ll_3->head = dummy->next;
+
+        delete dummy;
+        return ll_3;
     }
 };
 
@@ -83,9 +111,11 @@ int main()
     ll_1.create_linked_list(a);
     ll_2.create_linked_list(b);
 
-    ll_1.merge(ll_2);
+    LinkedList *ll_3 = ll_1.merge_sorted(&ll_2);
 
-    ll_1.dsiplay_LinkedList();
+    ll_3->dsiplay_LinkedList();
+
+    delete ll_3;
 
     return 0;
 }
