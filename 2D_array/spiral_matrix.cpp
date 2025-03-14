@@ -13,16 +13,16 @@ int main()
 
 {
 
-    vector<vector<int>> a = {{1, 2, 3},
-                             {4, 5, 6},
-                             {7, 8, 9}};
+    vector<vector<int>> a = {{1, 2, 3,10},
+                             {4, 5, 6,11},
+                             {7, 8, 9,12}};
 
     int left = 0;
     int right = a[0].size() - 1;
     int top = 0;
     int bottom = a.size() - 1;
 
-    while (left <= right and top <= bottom)
+    while (left <= right || top <= bottom)
     {
 
         for (int j = left; j <= right; j++)

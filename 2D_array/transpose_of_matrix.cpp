@@ -1,32 +1,31 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
+    int n = 3;
 
-    int a[2][3] = {{1, 2, 3},
-                   {3, 4, 6}};
+    int a[n][n] = {{1, 2, 3},
+                   {4, 5, 6},
+                   {7, 8, 9}};
 
-    int ans[3][2];
-
-    int row = 2, column = 3;
-    for (int i = 0; i < row;i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        for (int j = 0; j < column;j++)
+        for (int j = i+1; j < n; j++)
         {
-            ans[j][i] = a[i][j];
+                swap(a[i][j], a[j][i]);
         }
     }
 
-    for (int i = 0; i < column;i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < row;j++)
+        for (int j = 0; j < n; j++)
         {
-            cout << ans[i][j] << " ";
+            cout << a[i][j] << " ";
         }
 
         cout << endl;
     }
 
-        return 0;
+    return 0;
 }
